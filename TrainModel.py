@@ -36,7 +36,7 @@ def train(model, x_train, y_train, x_test, y_test, batch_size, epochs, model_nam
     # 配置训练模型
     model.compile(optimizer='rmsprop', metrics=['accuracy'], loss='categorical_crossentropy')
     # 图像增强，左右随机移动10%像素
-    data_gen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, fill_mode="nearest")
+    data_gen = ImageDataGenerator(rotation_range = 30)
     # 逐批生成数据训练模型
      # model.fit_generator(data_gen.flow(x_train, y_train, batch_size=batch_size),
      #                   steps_per_epoch=len(x_train) / batch_size, epochs=epochs,

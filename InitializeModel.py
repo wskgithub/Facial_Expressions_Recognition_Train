@@ -31,7 +31,7 @@ def initialize_model(filters, kernel_size, input_shape, pool_size, nb_classes):
     # 第三个卷积层
     model.add(Conv2D(filters=filters*2*2, kernel_size=kernel_size, activation='relu'))
     # 第四个卷积层
-    # model.add(Conv2D(filters=filters*2*2*2, kernel_size=kernel_size, activation='relu'))
+    model.add(Conv2D(filters=filters*2*2*2, kernel_size=kernel_size, activation='relu'))
     #池化
     model.add(MaxPooling2D(pool_size=pool_size))
     #####全链接层#####
