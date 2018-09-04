@@ -2,8 +2,9 @@ import argparse
 import os
 import time
 from InitializeModel import initialize_model
-from LoadData import load_data
+from LoadData import load_data, load_test_image
 from TrainModel import train
+from TestModel import classify_image
 
 FILTERS = 32 # 卷积滤波器数量
 IMAGE_SIZE = (64,64) # 图像缩放大小
@@ -12,6 +13,8 @@ INPUT_SHAPE = (64,64,3) # 图像张量
 POOL_SIZE = (2,2) # 池化缩小比例因素
 NB_CLASSES = 0 # 分类数
 EPOCHS = 100 # 循环的次数
+
+KIND_LISTS = ['anger', 'fear', 'happy', 'normal', 'sad', 'surprised']
 
 # 主函数
 if __name__=='__main__':
@@ -30,5 +33,9 @@ if __name__=='__main__':
     print("[INFO] compiling background model...")
     train(background_model, x_train_background, y_train_background, x_test_background, y_test_background,
           8, EPOCHS, 'models/Base_model.h5')
+
+    # 测试模型并输出分类日志
+    image_lists = load_test_image(test_images_path, IMAGE_SIZE)
+    classify_image(image_lists, KIND_LISTS)
 
     

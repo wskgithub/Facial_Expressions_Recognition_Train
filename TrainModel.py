@@ -4,7 +4,6 @@ import os
 from keras.callbacks import TensorBoard
 from keras.preprocessing.image import ImageDataGenerator
 from LoadData import load_data
-# from ResetModel import reset_model
 
 def train(model, x_train, y_train, x_test, y_test, batch_size, epochs, model_name):
     """
